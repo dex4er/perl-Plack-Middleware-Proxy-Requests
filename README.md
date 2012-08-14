@@ -48,7 +48,7 @@ can hang up. It is better to run proxy server with [Starlet](http://search.cpan.
 # BUGS
 
 If you find the bug or want to implement new features, please report it at
-[http://rt.cpan.org/NoAuth/Bugs.html?Dist=Plack-Middleware-Proxy-Requests](http://rt.cpan.org/NoAuth/Bugs.html?Dist=Plack-Middleware-Proxy-Requests)
+[https://github.com/dex4er/perl-Plack-Middleware-Proxy-Requests/issues](https://github.com/dex4er/perl-Plack-Middleware-Proxy-Requests/issues)
 
 The code repository is available at
 [http://github.com/dex4er/perl-Plack-Middleware-Proxy-Requests](http://github.com/dex4er/perl-Plack-Middleware-Proxy-Requests)
