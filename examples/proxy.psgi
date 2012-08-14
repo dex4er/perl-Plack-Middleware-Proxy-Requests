@@ -1,5 +1,7 @@
 #!/usr/bin/perl -c
 
+# plackup -s Twiggy -E Proxy -e 'enable q{AccessLog}' proxy.psgi
+
 use lib '../lib', 'lib';
 
 use Plack::Builder;

@@ -16,6 +16,9 @@ Plack::Middleware::Proxy::Requests - Forward proxy server
     };
 
     # From shell
+    plackup -s Twiggy -E Proxy -e 'enable q{AccessLog}' app.psgi
+
+    # or
     plackup -s Twiggy -E Proxy -MPlack::App::Proxy \
     -e 'enable q{AccessLog}; enable q{Proxy::Connect}; \
     enable q{Proxy::AddVia}; enable q{Proxy::Requests}; \
