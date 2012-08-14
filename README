@@ -18,9 +18,9 @@ SYNOPSIS
 
       # or
       plackup -s Twiggy -E Proxy -MPlack::App::Proxy \
-      -e 'enable q{AccessLog}; enable q{Proxy::Connect}; \
-      enable q{Proxy::AddVia}; enable q{Proxy::Requests}; \
-      Plack::App::Proxy->new_to_app'
+              -e 'enable q{AccessLog}; enable q{Proxy::Connect}; \
+                  enable q{Proxy::AddVia}; enable q{Proxy::Requests}; \
+                  Plack::App::Proxy->new_to_app'
 
 DESCRIPTION
     This module handles HTTP requests as a forward proxy server.
