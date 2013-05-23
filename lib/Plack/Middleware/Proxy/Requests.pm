@@ -18,13 +18,13 @@ Plack::Middleware::Proxy::Requests - Forward proxy server
   };
 
   # From shell
-  plackup -s Twiggy -E Proxy -e 'enable q{AccessLog}' app.psgi
+  plackup -s Starlet -E Proxy -e 'enable q{AccessLog}' app.psgi
 
   # or
-  plackup -s Twiggy -E Proxy -MPlack::App::Proxy \
+  plackup -s Starlet -E Proxy -MPlack::App::Proxy \
           -e 'enable q{AccessLog}; enable q{Proxy::Connect}; \
               enable q{Proxy::AddVia}; enable q{Proxy::Requests}; \
-              Plack::App::Proxy->new_to_app'
+              Plack::App::Proxy->new->to_app'
 
 =head1 DESCRIPTION
 
@@ -40,7 +40,8 @@ starting L<plackup> script. Note that this disable also
 L<Plack::Middleware::AccessLog> so it have to be enabled explicitly if needed.
 
 In some cases the default server L<Plack::Server::PSGI> alias C<Standalone>
-can hang up. It is better to run proxy server with L<Starlet> or L<Twiggy>.
+can hang up. It is better to run proxy server with L<Starlet>, L<Starman>
+or L<Twiggy>.
 
 =for readme stop
 
@@ -75,7 +76,7 @@ sub call {
 =head1 SEE ALSO
 
 L<Plack>, L<Plack::App::Proxy>, L<Plack::Middleware::Proxy::Connect>,
-L<Plack::Middleware::Proxy::AddVia>, L<Starlet>, L<Twiggy>.
+L<Plack::Middleware::Proxy::AddVia>, L<Starlet>, L<Starman>, L<Twiggy>.
 
 =head1 BUGS
 
