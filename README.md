@@ -16,13 +16,13 @@ Plack::Middleware::Proxy::Requests - Forward proxy server
     };
 
     # From shell
-    plackup -s Twiggy -E Proxy -e 'enable q{AccessLog}' app.psgi
+    plackup -s Starlet -E Proxy -e 'enable q{AccessLog}' app.psgi
 
     # or
-    plackup -s Twiggy -E Proxy -MPlack::App::Proxy \
+    plackup -s Starlet -E Proxy -MPlack::App::Proxy \
             -e 'enable q{AccessLog}; enable q{Proxy::Connect}; \
                 enable q{Proxy::AddVia}; enable q{Proxy::Requests}; \
-                Plack::App::Proxy->new_to_app'
+                Plack::App::Proxy->new->to_app'
 
 # DESCRIPTION
 
@@ -38,12 +38,13 @@ starting [plackup](http://search.cpan.org/perldoc?plackup) script. Note that thi
 [Plack::Middleware::AccessLog](http://search.cpan.org/perldoc?Plack::Middleware::AccessLog) so it have to be enabled explicitly if needed.
 
 In some cases the default server [Plack::Server::PSGI](http://search.cpan.org/perldoc?Plack::Server::PSGI) alias `Standalone`
-can hang up. It is better to run proxy server with [Starlet](http://search.cpan.org/perldoc?Starlet) or [Twiggy](http://search.cpan.org/perldoc?Twiggy).
+can hang up. It is better to run proxy server with [Starlet](http://search.cpan.org/perldoc?Starlet), [Starman](http://search.cpan.org/perldoc?Starman)
+or [Twiggy](http://search.cpan.org/perldoc?Twiggy).
 
 # SEE ALSO
 
 [Plack](http://search.cpan.org/perldoc?Plack), [Plack::App::Proxy](http://search.cpan.org/perldoc?Plack::App::Proxy), [Plack::Middleware::Proxy::Connect](http://search.cpan.org/perldoc?Plack::Middleware::Proxy::Connect),
-[Plack::Middleware::Proxy::AddVia](http://search.cpan.org/perldoc?Plack::Middleware::Proxy::AddVia), [Starlet](http://search.cpan.org/perldoc?Starlet), [Twiggy](http://search.cpan.org/perldoc?Twiggy).
+[Plack::Middleware::Proxy::AddVia](http://search.cpan.org/perldoc?Plack::Middleware::Proxy::AddVia), [Starlet](http://search.cpan.org/perldoc?Starlet), [Starman](http://search.cpan.org/perldoc?Starman), [Twiggy](http://search.cpan.org/perldoc?Twiggy).
 
 # BUGS
 
@@ -59,7 +60,7 @@ Piotr Roszatycki <dexter@cpan.org>
 
 # LICENSE
 
-Copyright (c) 2012 Piotr Roszatycki <dexter@cpan.org>.
+Copyright (c) 2012-2013 Piotr Roszatycki <dexter@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as perl itself.
