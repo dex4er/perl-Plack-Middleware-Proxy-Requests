@@ -18,13 +18,13 @@ Plack::Middleware::Proxy::Requests - Forward proxy server
   };
 
   # From shell
-  plackup -s Starlet -E Proxy -e 'enable q{AccessLog}' app.psgi
+  plackup -s Twiggy -E Proxy -e 'enable q{AccessLog}' app.psgi
 
   # or
-  plackup -s Starlet -E Proxy -MPlack::App::Proxy \
-          -e 'enable q{AccessLog}; enable q{Proxy::Connect}; \
-              enable q{Proxy::AddVia}; enable q{Proxy::Requests}; \
-              Plack::App::Proxy->new->to_app'
+  twiggy -MPlack::App::Proxy \
+         -e 'enable q{AccessLog}; enable q{Proxy::Connect}; \
+             enable q{Proxy::AddVia}; enable q{Proxy::Requests}; \
+             Plack::App::Proxy->new->to_app'
 
 =head1 DESCRIPTION
 
@@ -33,15 +33,16 @@ This module handles HTTP requests as a forward proxy server.
 Its job is to set a C<plack.proxy.url> environment variable based on
 C<REQUEST_URI> variable.
 
-The HTTP responses from the Internet might be invalid. In that case it is
-better to run the server without L<Plack::Middleware::Lint> module. This
-module is started by default and disabled if C<-E> option is used when
-starting L<plackup> script. Note that this disable also
-L<Plack::Middleware::AccessLog> so it have to be enabled explicitly if needed.
+The HTTP responses from the Internet might be invalid. In that case it
+is required to run the server without L<Plack::Middleware::Lint> module.
+This module is started by default and disabled if C<-E> or
+C<--no-default-middleware> option is used when starting L<plackup>
+script. Note that this disable also L<Plack::Middleware::AccessLog> so
+it have to be enabled explicitly if needed.
 
-In some cases the default server L<Plack::Server::PSGI> alias C<Standalone>
-can hang up. It is better to run proxy server with L<Starlet>, L<Starman>
-or L<Twiggy>.
+The default server L<Plack::Server::PSGI> alias C<Standalone> can hang
+up on stalled connection. It is better to run proxy server with
+L<Starlet>, L<Starman> or L<Twiggy>.
 
 =for readme stop
 

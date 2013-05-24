@@ -14,13 +14,13 @@ SYNOPSIS
       };
 
       # From shell
-      plackup -s Starlet -E Proxy -e 'enable q{AccessLog}' app.psgi
+      plackup -s Twiggy -E Proxy -e 'enable q{AccessLog}' app.psgi
 
       # or
-      plackup -s Starlet -E Proxy -MPlack::App::Proxy \
-              -e 'enable q{AccessLog}; enable q{Proxy::Connect}; \
-                  enable q{Proxy::AddVia}; enable q{Proxy::Requests}; \
-                  Plack::App::Proxy->new->to_app'
+      twiggy -MPlack::App::Proxy \
+             -e 'enable q{AccessLog}; enable q{Proxy::Connect}; \
+                 enable q{Proxy::AddVia}; enable q{Proxy::Requests}; \
+                 Plack::App::Proxy->new->to_app'
 
 DESCRIPTION
     This module handles HTTP requests as a forward proxy server.
@@ -29,15 +29,15 @@ DESCRIPTION
     `REQUEST_URI' variable.
 
     The HTTP responses from the Internet might be invalid. In that case it
-    is better to run the server without Plack::Middleware::Lint module. This
-    module is started by default and disabled if `-E' option is used when
-    starting plackup script. Note that this disable also
-    Plack::Middleware::AccessLog so it have to be enabled explicitly if
-    needed.
+    is required to run the server without Plack::Middleware::Lint module.
+    This module is started by default and disabled if `-E' or
+    `--no-default-middleware' option is used when starting plackup script.
+    Note that this disable also Plack::Middleware::AccessLog so it have to
+    be enabled explicitly if needed.
 
-    In some cases the default server Plack::Server::PSGI alias `Standalone'
-    can hang up. It is better to run proxy server with Starlet, Starman or
-    Twiggy.
+    The default server Plack::Server::PSGI alias `Standalone' can hang up on
+    stalled connection. It is better to run proxy server with Starlet,
+    Starman or Twiggy.
 
 SEE ALSO
     Plack, Plack::App::Proxy, Plack::Middleware::Proxy::Connect,

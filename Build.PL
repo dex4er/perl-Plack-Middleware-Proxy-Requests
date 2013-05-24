@@ -20,7 +20,6 @@ my $build = Module::Build->new(
         'Plack::App::Proxy'     => 0,
     },
     recommends              => {
-        'Starlet'               => 0,
         'Twiggy'                => 0,
     },
     build_requires          => {

@@ -16,13 +16,13 @@ Plack::Middleware::Proxy::Requests - Forward proxy server
     };
 
     # From shell
-    plackup -s Starlet -E Proxy -e 'enable q{AccessLog}' app.psgi
+    plackup -s Twiggy -E Proxy -e 'enable q{AccessLog}' app.psgi
 
     # or
-    plackup -s Starlet -E Proxy -MPlack::App::Proxy \
-            -e 'enable q{AccessLog}; enable q{Proxy::Connect}; \
-                enable q{Proxy::AddVia}; enable q{Proxy::Requests}; \
-                Plack::App::Proxy->new->to_app'
+    twiggy -MPlack::App::Proxy \
+           -e 'enable q{AccessLog}; enable q{Proxy::Connect}; \
+               enable q{Proxy::AddVia}; enable q{Proxy::Requests}; \
+               Plack::App::Proxy->new->to_app'
 
 # DESCRIPTION
 
@@ -31,15 +31,16 @@ This module handles HTTP requests as a forward proxy server.
 Its job is to set a `plack.proxy.url` environment variable based on
 `REQUEST_URI` variable.
 
-The HTTP responses from the Internet might be invalid. In that case it is
-better to run the server without [Plack::Middleware::Lint](http://search.cpan.org/perldoc?Plack::Middleware::Lint) module. This
-module is started by default and disabled if `-E` option is used when
-starting [plackup](http://search.cpan.org/perldoc?plackup) script. Note that this disable also
-[Plack::Middleware::AccessLog](http://search.cpan.org/perldoc?Plack::Middleware::AccessLog) so it have to be enabled explicitly if needed.
+The HTTP responses from the Internet might be invalid. In that case it
+is required to run the server without [Plack::Middleware::Lint](http://search.cpan.org/perldoc?Plack::Middleware::Lint) module.
+This module is started by default and disabled if `-E` or
+`--no-default-middleware` option is used when starting [plackup](http://search.cpan.org/perldoc?plackup)
+script. Note that this disable also [Plack::Middleware::AccessLog](http://search.cpan.org/perldoc?Plack::Middleware::AccessLog) so
+it have to be enabled explicitly if needed.
 
-In some cases the default server [Plack::Server::PSGI](http://search.cpan.org/perldoc?Plack::Server::PSGI) alias `Standalone`
-can hang up. It is better to run proxy server with [Starlet](http://search.cpan.org/perldoc?Starlet), [Starman](http://search.cpan.org/perldoc?Starman)
-or [Twiggy](http://search.cpan.org/perldoc?Twiggy).
+The default server [Plack::Server::PSGI](http://search.cpan.org/perldoc?Plack::Server::PSGI) alias `Standalone` can hang
+up on stalled connection. It is better to run proxy server with
+[Starlet](http://search.cpan.org/perldoc?Starlet), [Starman](http://search.cpan.org/perldoc?Starman) or [Twiggy](http://search.cpan.org/perldoc?Twiggy).
 
 # SEE ALSO
 
