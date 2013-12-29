@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dex4er/perl-Plack-Middleware-Proxy-Requests.png?branch=master)](https://travis-ci.org/dex4er/perl-Plack-Middleware-Proxy-Requests)
+
 # NAME
 
 Plack::Middleware::Proxy::Requests - Forward proxy server
@@ -32,20 +34,20 @@ Its job is to set a `plack.proxy.url` environment variable based on
 `REQUEST_URI` variable.
 
 The HTTP responses from the Internet might be invalid. In that case it
-is required to run the server without [Plack::Middleware::Lint](http://search.cpan.org/perldoc?Plack::Middleware::Lint) module.
+is required to run the server without [Plack::Middleware::Lint](https://metacpan.org/pod/Plack::Middleware::Lint) module.
 This module is started by default and disabled if `-E` or
-`--no-default-middleware` option is used when starting [plackup](http://search.cpan.org/perldoc?plackup)
-script. Note that this disable also [Plack::Middleware::AccessLog](http://search.cpan.org/perldoc?Plack::Middleware::AccessLog) so
+`--no-default-middleware` option is used when starting [plackup](https://metacpan.org/pod/plackup)
+script. Note that this disable also [Plack::Middleware::AccessLog](https://metacpan.org/pod/Plack::Middleware::AccessLog) so
 it have to be enabled explicitly if needed.
 
-The default server [Plack::Server::PSGI](http://search.cpan.org/perldoc?Plack::Server::PSGI) alias `Standalone` can hang
+The default server [Plack::Server::PSGI](https://metacpan.org/pod/Plack::Server::PSGI) alias `Standalone` can hang
 up on stalled connection. It is better to run proxy server with
-[Starlet](http://search.cpan.org/perldoc?Starlet), [Starman](http://search.cpan.org/perldoc?Starman) or [Twiggy](http://search.cpan.org/perldoc?Twiggy).
+[Starlet](https://metacpan.org/pod/Starlet), [Starman](https://metacpan.org/pod/Starman) or [Twiggy](https://metacpan.org/pod/Twiggy).
 
 # SEE ALSO
 
-[Plack](http://search.cpan.org/perldoc?Plack), [Plack::App::Proxy](http://search.cpan.org/perldoc?Plack::App::Proxy), [Plack::Middleware::Proxy::Connect](http://search.cpan.org/perldoc?Plack::Middleware::Proxy::Connect),
-[Plack::Middleware::Proxy::AddVia](http://search.cpan.org/perldoc?Plack::Middleware::Proxy::AddVia), [Starlet](http://search.cpan.org/perldoc?Starlet), [Starman](http://search.cpan.org/perldoc?Starman), [Twiggy](http://search.cpan.org/perldoc?Twiggy).
+[Plack](https://metacpan.org/pod/Plack), [Plack::App::Proxy](https://metacpan.org/pod/Plack::App::Proxy), [Plack::Middleware::Proxy::Connect](https://metacpan.org/pod/Plack::Middleware::Proxy::Connect),
+[Plack::Middleware::Proxy::AddVia](https://metacpan.org/pod/Plack::Middleware::Proxy::AddVia), [Starlet](https://metacpan.org/pod/Starlet), [Starman](https://metacpan.org/pod/Starman), [Twiggy](https://metacpan.org/pod/Twiggy).
 
 # BUGS
 
