@@ -3,7 +3,7 @@ requires 'perl', '5.006';
 requires 'Plack';
 requires 'Plack::App::Proxy';
 
-on build => sub {
+on configure => sub {
     requires 'Module::Build';
     requires 'Module::CPANfile';
 };
